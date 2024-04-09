@@ -1,9 +1,9 @@
 <?php
 
-include dirname(__FILE__).'/../classes/classes.php';
+include("../classes/classes.php");
 
 $OgrenciID = $_GET['OgrenciID'] ; 
-$OgrenciBolumID = $_GET['OgrenciBolumID'] ;
+$OgrenciBolumID = $_GET['OgrenciBolumID'] ; 
 
 $lssnandstdnt = new database();
 
@@ -15,42 +15,10 @@ $lessonsrows = $lssnandstdnt->getrows("SELECT DersID, DersAdi FROM Dersler WHERE
 // }
 // BU KISMA NOTLAR EKLENECEK 
 ?>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Obs Ogrenci Not Bilgisi</title>
-	
-	<!-- Bootstrap -->
-    <link href="../../css/bootstrap-4.4.1.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet" type="text/css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" rel="stylesheet" type="text/css">
-	
-</head>	
-<body>
-	
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="../../userProfile.html">
-			<img class="img" alt="" src="../../images/profilePic.png" width="30" height="30"/>
-			<label>Kullanici Ismi</label>
-		</a>
-		
-		<div class="navbar-brand text-center">
-			<img class="img" src="../../images/logo.png" alt="logo" width="30" heigth="30"/>
-		</div>
-		
-		<div>
-			<a class="navbar-brand float-right" href="../../loginPage.html">
-				<img src="../../images/logout.png" alt="" height="30" width="30"/>
-			</a>
-			<a class="navbar-brand float-right nav-link" href="../../staffPanel.html">
-				<img src="../../images/home.png" alt="" height="30" width="30">
-			</a>
-		</div>
-	</nav>
-	
-	<div class="bg-secondary">
+
+<div class="bg-secondary">
 		<div class="container col-md-12 p-5">
-			<form method="post">
+			<form>
 				<table class="table table-dark bg-dark">
 					<thead class="text-center">
 						<tr>
@@ -64,102 +32,51 @@ $lessonsrows = $lssnandstdnt->getrows("SELECT DersID, DersAdi FROM Dersler WHERE
 								<label>Soy Adı</label>
 							</th>
 							<th>
-								<label>Ders</label>
+								<label>Bölümü İd</label>
 							</th>
 							<th>
-								<label>Sınav Türü</label>
-							</th>
-							<th>
-								<label>Not Bilgisi</label>
+							
 							</th>
 						</tr>
 					</thead>
 					<tbody>
+					<?php 
+					foreach ($GetStdntInf as $inf) {?>
 						<tr>
-							<?php 
-								foreach ($GetStdntInf as $inf) {?>
-								
-								<td><?php echo $inf->OgrenciID ?></td>
-								<td><?php echo $inf->Isim ?></td>
-								<td><?php echo $inf->Soyisim ?></td>
-								
-							<?php }?>
-								
-							<td class="form-group">
-								<select name='lesson' class="form-control">
-									<?php
-									foreach ($lessonsrows as $lesson) {
-										echo "<option value='".$lesson->DersID."'>".$lesson->DersAdi."</option>" ; 
-									}
-									?>
-								</select>
-							</td>
-							<td>
-								<select name='type' class="form-control">
-									<?php
-									foreach ($lessonsrows as $lesson) {
-										echo "<option value='".$lesson->DersID."'>".$lesson->DersAdi."</option>" ; 
-									}
-									?>
-								</select>
-							</td>
-							<td class="form-group">
-								<input type='text' name='grade' class="form-control">
-							</td>							
-						</tr>
-						<tr>
-							<?php 
-								foreach ($GetStdntInf as $inf) {?>
-								
-								<td><?php echo $inf->OgrenciID ?></td>
-								<td><?php echo $inf->Isim ?></td>
-								<td><?php echo $inf->Soyisim ?></td>
-								
-							<?php }?>
-								
-							<td class="form-group">
-								<select name='lesson' class="form-control">
-									<?php
-									foreach ($lessonsrows as $lesson) {
-										echo "<option value='".$lesson->DersID."'>".$lesson->DersAdi."</option>" ; 
-									}
-									?>
-								</select>
-							</td>
-							<td>
-								<select name='type' class="form-control">
-									<?php
-									foreach ($lessonsrows as $lesson) {
-										echo "<option value='".$lesson->DersID."'>".$lesson->DersAdi."</option>" ; 
-									}
-									?>
-								</select>
-							</td>
-							<td class="form-group">
-								<input type='text' name='grade' class="form-control">
-							</td>		
-						</tr>
-						<tr>
-							<td colspan="6">
-								<input type='submit' value='Not Ekle' name="notekle" class="btn btn-primary float-right rounded-3">
+							<td><?php echo $inf->OgrenciID ?></td>
+							<td><?php echo $inf->Isim ?></td>
+							<td><?php echo $inf->Soyisim ?></td>
+							<td><?php echo $inf->BolumID ?></td>
+							<td class="float-right">
+							
 							</td>
 						</tr>
+					<?php }?>
 					</tbody>
 				</table>
 			</form>
 		</div>
 	</div>
-	
-	
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-	<script src="js/jquery-3.4.1.min.js"></script>
+<div>
+<h2>Öğrenciye Not Ekle</h2>
+<form method='post'>
+    <input type='hidden' name='ogrenciID' value="<?php echo $OgrenciID ?>">
+    <input type='hidden' name='bolumID' value="<?php echo $OgrenciBolumID ?>">
+    <label for='ders'>Ders Seçin:</label>
+    <select name='lesson'>
+        <?php 
+        foreach ($lessonsrows as $lesson) {
+            echo "<option value='".$lesson->DersID."'>".$lesson->DersAdi."</option>" ; 
+        }
+        ?>
+    </select>
+   
+    <label for='not'>Not:</label>
+    <input type='text' name='grade'><br>
+    <input type='submit' value='Not Ekle' name="notekle">
+</form>
 
-    <!-- Include all compiled plugins (below), or include individual files as needed --> 
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap-4.4.1.js"></script>
-</body>
-</html>
-
+</div>
 
 <?php 
 
@@ -169,7 +86,7 @@ if(isset($_POST['notekle'])){
     $notu = $_POST['grade'];
 
 
-    echo $ogrenciID.$DersID.$notu; 
+    echo $ogrenciID.$DersID.$notu ; 
 
     $addgrade = new database();
 

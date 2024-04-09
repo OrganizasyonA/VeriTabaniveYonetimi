@@ -97,6 +97,7 @@ class signup extends database{
             return $this->stmt;
         } catch (PDOException $e) {
             error_log("kayıt olusturulamadı".$e->getMessage());
+			print_r($this->stmt->errorInfo());
         }
     }
 }

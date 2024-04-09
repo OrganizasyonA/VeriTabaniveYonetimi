@@ -28,14 +28,14 @@
 				
 				<img src="../../images/logout.png" alt="" height="30" width="30"/>
 			</a>
-			<a class="navbar-brand float-right nav-link" href="../staffPanel.html">
+			<a class="navbar-brand float-right nav-link" href="../../staffPanel.html">
 				<img src="../../images/home.png" alt="" height="30" width="30">
 			</a>
 		</div>
 	</nav>
 	<?php 
 	
-	include("../classes/classes.php")
+	include("../classes/classes.php");
 	
 	$allstudents = new database();
 	$studentsrows = $allstudents->getrows("SELECT * from ogrenci",null);

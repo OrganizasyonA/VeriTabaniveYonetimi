@@ -34,7 +34,7 @@
 	
 	<?php 
 	
-	include("/classes/classes.php");
+	include("classes/classes.php");
 	
 	$allstudents = new database();
 	$studentsrows = $allstudents->getrows("SELECT * from ogrenci",null);
