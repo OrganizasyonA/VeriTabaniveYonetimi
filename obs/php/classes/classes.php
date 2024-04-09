@@ -23,9 +23,9 @@ class database {
         }
     }
 
-    function __construct() 
+    function __construct()
     {
-        $this->ConnectDB();        
+        $this->ConnectDB();
     }
 
 
@@ -88,11 +88,11 @@ class database {
 }
 
 
-class login extends database{ // login değil signup düzelt 
+class signup extends database{
 
     function getinf($params = null){
         try {
-            $this->stmt = $this->pdo->prepare("insert into ogrenci (Isim,Soyisim,TC,DogumTarihi,Cinsiyet,AnneAdi,BabaAdi,Adres) values (?,?,?,?,?,?,?,?)");
+            $this->stmt = $this->pdo->prepare("insert into ogrenci (Isim,Soyisim,tcNum,DogumTarihi,Cinsiyet,BolumID,AnneAdi,BabaAdi,Adres) values (?,?,?,?,?,?,?,?,?)");
             $this->stmt->execute($params);
             return $this->stmt;
         } catch (PDOException $e) {
