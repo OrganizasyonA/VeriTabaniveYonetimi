@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 10 Nis 2024, 00:05:02
+-- Üretim Zamanı: 10 Nis 2024, 01:47:53
 -- Sunucu sürümü: 10.4.28-MariaDB
 -- PHP Sürümü: 8.2.4
 
@@ -59,7 +59,9 @@ CREATE TABLE `dersler` (
 --
 
 INSERT INTO `dersler` (`DersID`, `DersAdi`, `BolumID`) VALUES
-(1, 'programlama', 1);
+(1, 'programlama', 1),
+(2, 'Web Tasarim', 1),
+(3, 'Grafik Animasyon', 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +75,7 @@ CREATE TABLE `ogrenci` (
   `Soyisim` varchar(50) DEFAULT NULL,
   `tcNum` bigint(11) NOT NULL,
   `DogumTarihi` date DEFAULT NULL,
-  `Cinsiyet` enum('Erkek','Kadın','Diğer') DEFAULT NULL,
+  `Cinsiyet` varchar(10) NOT NULL,
   `BolumID` int(2) DEFAULT NULL,
   `AnneAdi` varchar(20) NOT NULL,
   `BabaAdi` varchar(20) NOT NULL,
@@ -85,7 +87,9 @@ CREATE TABLE `ogrenci` (
 --
 
 INSERT INTO `ogrenci` (`OgrenciID`, `Isim`, `Soyisim`, `tcNum`, `DogumTarihi`, `Cinsiyet`, `BolumID`, `AnneAdi`, `BabaAdi`, `Adres`) VALUES
-(4, 'enes', 'demir', 20032002198, '1999-02-26', 'Erkek', 1, 'anne', 'baba', 'kocaeli');
+(4, 'enes', 'demir', 20032002198, '1999-02-26', 'Erkek', 1, 'anne', 'baba', 'kocaeli'),
+(5, 'bahattin', 'cinar', 88889999112, '2002-03-22', 'Erkek', 2, 'A', 'B', 'Adres'),
+(6, 'A', 'B', 12345678911, '1999-02-22', 'Kadin', 1, 'B', 'A', 'DADRES');
 
 -- --------------------------------------------------------
 
@@ -96,17 +100,18 @@ INSERT INTO `ogrenci` (`OgrenciID`, `Isim`, `Soyisim`, `tcNum`, `DogumTarihi`, `
 CREATE TABLE `ogrenci_ders_notlari` (
   `OgrenciID` int(11) NOT NULL,
   `DersID` int(11) NOT NULL,
-  `Notu` decimal(5,2) DEFAULT NULL,
-  `VizeNotu` int(11) NOT NULL,
-  `FinalNotu` int(11) NOT NULL
+  `Vize` decimal(4,0) DEFAULT 0,
+  `Final` decimal(4,0) DEFAULT 0,
+  `Odev` decimal(4,0) DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=latin5 COLLATE=latin5_turkish_ci;
 
 --
 -- Tablo döküm verisi `ogrenci_ders_notlari`
 --
 
-INSERT INTO `ogrenci_ders_notlari` (`OgrenciID`, `DersID`, `Notu`, `VizeNotu`, `FinalNotu`) VALUES
-(4, 1, 75.00, 0, 0);
+INSERT INTO `ogrenci_ders_notlari` (`OgrenciID`, `DersID`, `Vize`, `Final`, `Odev`) VALUES
+(4, 1, 90, 0, 0),
+(4, 2, 0, 80, 0);
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -153,13 +158,13 @@ ALTER TABLE `bolumler`
 -- Tablo için AUTO_INCREMENT değeri `dersler`
 --
 ALTER TABLE `dersler`
-  MODIFY `DersID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `DersID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `ogrenci`
 --
 ALTER TABLE `ogrenci`
-  MODIFY `OgrenciID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `OgrenciID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

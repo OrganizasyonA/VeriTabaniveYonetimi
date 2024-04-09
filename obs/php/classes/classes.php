@@ -41,7 +41,7 @@ class database {
             }
             return $this->stmt->fetch();
         } catch (\Throwable $th) {
-            
+            print_r($this->stmt->errorInfo());
         }
     }
 
@@ -57,7 +57,7 @@ class database {
             }
             return $this->stmt->fetchAll();
         } catch (\Throwable $th) {
-            //throw $th;
+            print_r($this->stmt->errorInfo());
         }
     }
 
@@ -73,7 +73,7 @@ class database {
             }
             return $this->stmt->fetchColumn();
         } catch (\Throwable $th) {
-            
+            print_r($this->stmt->errorInfo());
         }
     }
 
