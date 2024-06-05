@@ -22,29 +22,26 @@
 		</div>
 	</nav>
 	
-	<form method="post" class="form p-3 col-sm-5 col-md-4 col-lg-4 col-xl-4" action="php/loginPage.php">
+	<form method="post" class="form p-3 col-sm-5 col-md-4 col-lg-4 col-xl-4" action="php/pages/rstPass.php">
 		<div class="input-group">
 			<label>Kullanıcı Adınız :</label>
 		</div>
 		<div class="input-group mb-3">
-			<input type="text" class="form-control" name="kulAd" id="kulNo" placeholder="Numaraniz"/>
+			<input type="text" class="form-control" name="kulAd" id="kulAd" placeholder="Isminiz"/>
 		</div>
 		<div class="input-group">
-			<label>Kullanıcı Şifreniz :</label>
+			<label>Kullanici Id niz</label>
 		</div>
 		<div class="input-group mb-3">
-			<input type="password" class="form-control" name="kulSif" id="kulSif" placeholder="Sifreniz"/>
-			<button type="submit" class="btn btn-outline-secondary text-white bg-secondary">Giris Yap</button>
+			<input type="text" class="form-control" name="kulId" id="kulId" placeholder="idniz"/>
 		</div>
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<td>
-	  					<a class="text-primary" href="rstPass.html">Sifremi Unuttum</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="input-group">
+			<label>Yeni Sifreniz</label>
+		</div>
+		<div class="input-group mb-3">
+			<input type="password" class="form-control" name="userPass" id="userPass" placeholder="yeni sifreniz"/>
+			<button type="submit" class="btn btn-outline-secondary text-white bg-secondary">Sifremi Guncelle</button>
+		</div>
 	</form>
 	
 	

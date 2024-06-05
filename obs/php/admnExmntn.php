@@ -78,7 +78,8 @@
 							<td><?php echo $student->tcNum ?></td>
 							<td><?php echo $student->BolumID ?></td>
 							<td class="float-right">
-							<a href="yoklama.php?tcNum=<?php echo $student->tcNum; ?>&OgrenciBolumID=<?php echo $student->BolumID; ?>">Not Gir</a>
+							<a href="yoklama.php?tcNum=<?php echo $student->tcNum; ?>&OgrenciBolumID=<?php echo $student->BolumID; ?>">Not Gir</a>//yoklama.php olusturulup gerekli seyler eklenicek
+								//tablo gelmiyo
 							</td>
 						</tr>
 					<?php }?>

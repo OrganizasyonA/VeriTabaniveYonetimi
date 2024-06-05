@@ -1,8 +1,11 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Obs Not Sistemi</title>
+<title>Obs</title>
 
 	<!-- Bootstrap -->
     <link href="../../css/bootstrap-4.4.1.css" rel="stylesheet">
@@ -16,10 +19,11 @@
 	<nav class="navbar navbar-dark bg-dark">
 		<div class="navbar-brand">
 			<img class="img" alt="" src="../../images/profilePic.png" width="30" height="30"/>
-			<?php
-				session_start();
-				echo $_SESSION['userName'];
-			?>
+			<label>
+				<?php
+					echo $_SESSION['userName'];
+				?>
+			</label>
 		</div>
 		
 		<div class="navbar-brand text-center">
@@ -31,22 +35,11 @@
 				
 				<img src="../../images/logout.png" alt="" height="30" width="30"/>
 			</a>
-			<a class="navbar-brand float-right nav-link" href="../../staffPanel.html">
+			<a class="navbar-brand float-right nav-link" href="../stndntPanel.php">
 				<img src="../../images/home.png" alt="" height="30" width="30">
 			</a>
 		</div>
 	</nav>
-	<?php 
-	
-	include("../classes/classes.php");
-	
-	$allstudents = new database();
-	$studentsrows = $allstudents->getrows("SELECT * FROM ogrenci",null);
-
-	// bu kısma ders notları da eklenecek 
-	
-	
-	?>
 	
 	<div>
 		<div class="container col-md-12 p-5">
@@ -55,40 +48,56 @@
 					<thead class="text-center">
 						<tr>
 							<th>
-								<label>Ogrencinin Adi</label>
+								<label>Isminiz</label>
 							</th>
 							<th>
-								<label>Soyadi</label>
+								<label>Soy Isminiz</label>
 							</th>
 							<th>
-								<label>Numarasi</label>
+								<label>Tcniz</label>
 							</th>
 							<th>
-								<label>Bölümü İd</label>
+								<label>Bolumunuz</label>
 							</th>
 							<th>
-							
+								<label>Dogum Tarihiniz</label>
+							</th>
+							<th>
+								<label>Annenizin Adi</label>
+							</th>
+							<th>
+								<label>Babanizin adi</label>
+							</th>
+							<th>
+								<label>Adresiniz</label>
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-					<?php 
-					foreach ($studentsrows as $student) {?>
+					<?php
+					include"../classes/classes.php";
+					
+					$stdntData = "SELECT * FROM kullanici WHERE id = '".$_SESSION['id']."'";
+					$result = $conn->query($stdntData);
+					
+					$row = $result->fetch_assoc();?>
 						<tr class="text-center">
-							<td><?php echo $student->Isim ?></td>
-							<td><?php echo $student->Soyisim ?></td>
-							<td><?php echo $student->tcNum ?></td>
-							<td><?php echo $student->BolumID ?></td>
-							<td class="float-right">
-							<a href="not.php?tcNum=<?php echo $student->tcNum; ?>&OgrenciBolumID=<?php echo $student->BolumID; ?>">Not Gir</a>
-							</td>
+							<td><?php echo $row['Isim'] ?></td>
+							<td><?php echo $row['Soyisim'] ?></td>
+							<td><?php echo $row['tcNum'] ?></td>
+							<td><?php echo $row['BolumID'] ?></td>
+							<td><?php echo $row['DogumTarihi'] ?></td>
+							<td><?php echo $row['AnneAdi'] ?></td>
+							<td><?php echo $row['BabaAdi'] ?></td>
+							<td><?php echo $row['Adres'] ?></td>
 						</tr>
-					<?php }?>
 					</tbody>
 				</table>
 			</form>
 		</div>
 	</div>
+	
+	
 	
 	
 	

@@ -9,7 +9,6 @@ class database {
     protected $pdo = null ;
     protected $stmt = null ;
 
-
     protected function connectDb(){
         $SQLSTR="mysql:host=".$this->MYSQL_HOST.";dbname=".$this->MYSQL_DB.";";
         try {

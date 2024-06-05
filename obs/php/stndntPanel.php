@@ -14,7 +14,7 @@ session_start();
 	
 </head>
 
-<body>
+<body class="bg-secondary">
 	
 	<nav class="navbar navbar-dark bg-dark">
 		<div class="navbar-brand">
@@ -44,23 +44,18 @@ session_start();
 	<div class="container pt-5 text-center text-decoration-none" style="max-width: 90%">
 		<div class="row">
 			<div class="col-sm rounded ml-3 p-2" style="background-color: lightgreen; height: 50px;">
-				<a href="stdntRegister.php" class="text-decoration-none text-primary">
-					<label>Ogrenci Kayit</label>
+				<a href="pages/stdntPersonal.php" class="text-decoration-none text-primary">
+					<label>Kişisel Bilgilerim</label>
 				</a>
 			</div>
 			<div class="col-sm rounded ml-3 p-2" style="background-color: lightcoral; height: 50px;">
-				<a href="pages/grd.php" class="text-decoration-none text-primary">
-					<label>Not Bilgisi Girisi</label>
+				<a href="pages/stdntGrd.php" class="text-decoration-none text-primary">
+					<label>Not Bilgilerim</label>
 				</a>
 			</div>
 			<div class="col-sm rounded ml-3 p-2" style="background-color: lightblue; height: 50px;">
-				<a href="admnExmntn.php" class="text-decoration-none text-primary">
-					<label>Yoklama Girisi</label>
-				</a>
-			</div>
-			<div class="col-sm rounded ml-3 p-2" style="background-color: lightgray; height: 50px;">
-				<a href="andmStdntData.php" class="text-decoration-none text-primary">
-					<label>Ogrenci Bilgileri</label>
+				<a href="pages/stdntAttnc.php" class="text-decoration-none text-primary">
+					<label>Yoklama Bilgisi</label>
 				</a>
 			</div>
 		</div>
