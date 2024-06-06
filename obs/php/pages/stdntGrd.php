@@ -66,18 +66,20 @@ session_start();
 					<tbody>
 					<?php
 					include"../classes/classes.php";
+						
+					$db = new database();
+					$userCreds = $db->getrows("SELECT * FROM ogrenci_ders_notlari WHERE Isim = ? ",array($_SESSION['userName']));
+					foreach ($userCreds as $key => $user) { ?>
 					
-					$stdntData = "SELECT * FROM kullanici WHERE id = '".$_SESSION['id']."'";
-					$result = $conn->query($stdntData);
-					
-					$row = $result->fetch_assoc();?>
 						<tr class="text-center">
-							<td><?php echo $row['tcNum'] ?></td>
-							<td><?php echo $row['DersID'] ?></td>
-							<td><?php echo $row['VizeNotu'] ?></td>
-							<td><?php echo $row['FinalNotu'] ?></td>
-							<td><?php echo $row['Notu'] ?></td>
+							<td><?php echo $user->tcNum ?></td>
+							<td><?php echo $user->DersID ?></td>
+							<td><?php echo $user->VizeNotu?></td>
+							<td><?php echo $user->FinalNotu ?></td>
+							<td><?php echo $user->Notu ?></td>
 						</tr>
+					</tbody>
+					<?php } ?>
 					</tbody>
 				</table>
 			</form>

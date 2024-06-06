@@ -78,22 +78,21 @@ session_start();
 					include"../classes/classes.php";
 						
 					$db = new database();
-					$db->connectDb();
+					$userCreds = $db->getrows("SELECT * FROM ogrenci WHERE Isim = ? AND sifre = ? ",array($_SESSION['userName'],$_SESSION['userPass']));
+					foreach ($userCreds as $key => $user) { ?>
 					
-					$query = "SELECT * FROM ogrenci WHERE Isim = '".$_SESSION['userName']."' AND sifre = '".$_SESSION['userPass']."'";
-					$result = $db->getrows($query);
-					
-					$row = $result->fetch_assoc();?>
 						<tr class="text-center">
-							<td><?php echo $row['Isim'] ?></td>
-							<td><?php echo $row['Soyisim'] ?></td>
-							<td><?php echo $row['tcNum'] ?></td>
-							<td><?php echo $row['BolumID'] ?></td>
-							<td><?php echo $row['DogumTarihi'] ?></td>
-							<td><?php echo $row['AnneAdi'] ?></td>
-							<td><?php echo $row['BabaAdi'] ?></td>
-							<td><?php echo $row['Adres'] ?></td>
+							<td><?php echo $user->Isim ?></td>
+							<td><?php echo $user->Soyisim ?></td>
+							<td><?php echo $user->tcNum?></td>
+							<td><?php echo $user->BolumID ?></td>
+							<td><?php echo $user->DogumTarihi ?></td>
+							<td><?php echo $user->AnneAdi ?></td>
+							<td><?php echo $user->BabaAdi ?></td>
+							<td><?php echo $user->Adres ?></td>
 						</tr>
+					</tbody>
+					<?php } ?>
 					</tbody>
 				</table>
 			</form>
