@@ -42,9 +42,6 @@
 	
 	$allstudents = new database();
 	$studentsrows = $allstudents->getrows("SELECT * FROM ogrenci",null);
-
-	// bu kısma ders notları da eklenecek 
-	
 	
 	?>
 	

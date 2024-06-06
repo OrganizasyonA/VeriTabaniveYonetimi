@@ -35,7 +35,7 @@ session_start();
 				
 				<img src="../images/logout.png" alt="" height="30" width="30"/>
 			</a>
-			<a class="navbar-brand float-right nav-link disabled" href="../staffPanel.html">
+			<a class="navbar-brand float-right nav-link disabled" href="stndntPanel.php">
 				<img src="../images/home.png" alt="" height="30" width="30">
 			</a>
 		</div>
@@ -51,11 +51,6 @@ session_start();
 			<div class="col-sm rounded ml-3 p-2" style="background-color: lightcoral; height: 50px;">
 				<a href="pages/stdntGrd.php" class="text-decoration-none text-primary">
 					<label>Not Bilgilerim</label>
-				</a>
-			</div>
-			<div class="col-sm rounded ml-3 p-2" style="background-color: lightblue; height: 50px;">
-				<a href="pages/stdntAttnc.php" class="text-decoration-none text-primary">
-					<label>Yoklama Bilgisi</label>
 				</a>
 			</div>
 		</div>

@@ -14,7 +14,7 @@ session_start();
 	
 </head>
 
-<body>
+<body class="bg-secondary">
 	
 	<nav class="navbar navbar-dark bg-dark">
 		<div class="navbar-brand">
@@ -51,11 +51,6 @@ session_start();
 			<div class="col-sm rounded ml-3 p-2" style="background-color: lightcoral; height: 50px;">
 				<a href="pages/grd.php" class="text-decoration-none text-primary">
 					<label>Not Bilgisi Girisi</label>
-				</a>
-			</div>
-			<div class="col-sm rounded ml-3 p-2" style="background-color: lightblue; height: 50px;">
-				<a href="admnExmntn.php" class="text-decoration-none text-primary">
-					<label>Yoklama Girisi</label>
 				</a>
 			</div>
 			<div class="col-sm rounded ml-3 p-2" style="background-color: lightgray; height: 50px;">

@@ -76,9 +76,12 @@ session_start();
 					<tbody>
 					<?php
 					include"../classes/classes.php";
+						
+					$db = new database();
+					$db->connectDb();
 					
-					$stdntData = "SELECT * FROM kullanici WHERE id = '".$_SESSION['id']."'";
-					$result = $conn->query($stdntData);
+					$query = "SELECT * FROM ogrenci WHERE Isim = '".$_SESSION['userName']."' AND sifre = '".$_SESSION['userPass']."'";
+					$result = $db->getrows($query);
 					
 					$row = $result->fetch_assoc();?>
 						<tr class="text-center">

@@ -24,11 +24,6 @@ $lssnandstdnt = new database();
 
 $GetStdntInf = $lssnandstdnt->getrows("SELECT * FROM ogrenci WHERE tcNum = ?",array($OgrenciID));
 $lessonsrows = $lssnandstdnt->getrows("SELECT DersID, DersAdi FROM Dersler WHERE BolumID = ?",array($OgrenciBolumID));
-
-// foreach ($lessonsrows as $lesson) {
-//     echo $lesson->DersAdi ; 
-// }
-// BU KISMA NOTLAR EKLENECEK 
 ?>
 	
 	<nav class="navbar navbar-dark bg-dark">

@@ -10,6 +10,7 @@ if(!empty($_POST)){
 	$query2 = "SELECT * FROM ogrenci WHERE Isim = ? AND sifre = ?";
 	
 	$_SESSION['userName'] = $_POST['kulAd'];
+	$_SESSION['userPass'] = $_POST['kulSif'];
 
 	if($database->getrow($query,array($_POST['kulAd'],$_POST['kulSif']))){
 		
@@ -18,15 +19,6 @@ if(!empty($_POST)){
 		
 	}
 	else if($database->getrow($query2,array($_POST['kulAd'],$_POST['kulSif']))){
-		
-		$userName = $_POST['kulAd'];
-		$userPass = $_POST['kulSif'];
-		
-		$idQuery = "SELECT tcNum FROM kullanici WHERE Isim = '$userName' AND Isim = '$userPass'";
-		$idResult = mysqli_query($conn, $idQuery);//$conn ile db baglantisi ayarlanicak
-		$id = mysqli_fetch_assoc($idResult)['tcNum'];
-		$_SESSION['id'] = $level;
-		
 		echo "giris basarili" ;
 		header("Location: stndntPanel.php");
 	}
